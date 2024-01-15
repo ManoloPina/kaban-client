@@ -8,6 +8,6 @@ export const FormContainer = styled.form`
   width: 100%;
 `;
 
-export const LoginNavBtn = styled(NavLink)`
+export const RegisterNavBtn = styled(NavLink)`
   text-align: center;
 `;

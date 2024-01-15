@@ -1,17 +1,21 @@
 import React from "react";
-import { AuthProvider } from "src/context/AuthContext";
-
+import { ThemeProvider } from "styled-components";
 //Styles
 import "./App.scss";
+import "animate.css";
+import theme from "src/styles/theme";
 //Components
 import Routes from "src/routes";
+import { AppProvider } from "src/context/AppContext";
 //Pages
 
 const App = () => {
   return (
-    <AuthProvider>
-      <Routes />
-    </AuthProvider>
+    <ThemeProvider theme={theme}>
+      <AppProvider>
+        <Routes />
+      </AppProvider>
+    </ThemeProvider>
   );
 };
 

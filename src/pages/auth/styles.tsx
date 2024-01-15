@@ -11,7 +11,3 @@ export const MainWrapper = styled.div`
   width: 520px;
   border: solid 1px transparent;
 `;
-
-export const Title = styled.h1`
-  color: white;
-`;
