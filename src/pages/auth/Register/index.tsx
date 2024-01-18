@@ -51,6 +51,7 @@ export const Register: React.FC = React.memo(() => {
       method: "post",
       path: ENDPOINT.AUTH.REGISTER,
       payload: form,
+      showSuccessMsg: true,
     });
 
     if (res) {

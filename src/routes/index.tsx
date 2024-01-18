@@ -8,6 +8,7 @@ import { ProtectedRoute } from "src/routes/ProtectedRoute";
 //Pages
 import { Login } from "src/pages/auth/Login";
 import { Register } from "src/pages/auth/Register";
+import { Home } from "src/pages/Home";
 //Types
 import { ROUTES } from "src/constants";
 
@@ -30,7 +31,7 @@ const Routes = () => {
       children: [
         {
           path: ROUTES.HOME,
-          element: <h1>Home Page</h1>,
+          element: <Home />,
         },
       ],
     },
