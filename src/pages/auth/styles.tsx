@@ -3,6 +3,14 @@ import styled from "styled-components";
 export const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+`;
+
+export const FormWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   background-color: #cacbd4;
@@ -11,3 +19,4 @@ export const MainWrapper = styled.div`
   width: 520px;
   border: solid 1px transparent;
 `;
+

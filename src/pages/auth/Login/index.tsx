@@ -6,12 +6,12 @@ import { useNavigate } from "react-router-dom";
 //Styles
 import * as S from "./styles";
 import * as Styles from "src/styles";
-import { MainWrapper } from "src/pages/auth/styles";
+import { MainWrapper, FormWrapper } from "src/pages/auth/styles";
 //Components
 import { TextField } from "src/components/forms";
 //Types
 import { ROUTES } from "src/constants";
-import { IUser } from "src/types/user";
+import { IUser } from "src/types/User";
 
 interface IForm {
   email: string;
@@ -51,7 +51,7 @@ export const Login: React.FC = React.memo(() => {
   };
 
   return (
-    <>
+    <MainWrapper>
       <Styles.Title
         as="h1"
         color="white"
@@ -62,7 +62,7 @@ export const Login: React.FC = React.memo(() => {
       >
         Taksboard
       </Styles.Title>
-      <MainWrapper>
+      <FormWrapper>
         <S.FormContainer onSubmit={onSubmit(handleSubmit)}>
           <TextField
             fullWidth
@@ -88,7 +88,7 @@ export const Login: React.FC = React.memo(() => {
 
           <button type="submit">Login</button>
         </S.FormContainer>
-      </MainWrapper>
-    </>
+      </FormWrapper>
+    </MainWrapper>
   );
 });

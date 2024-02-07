@@ -7,7 +7,6 @@ import theme from "src/styles/theme";
 //Components
 import Routes from "src/routes";
 import { AppProvider } from "src/context/AppContext";
-//Pages
 
 const App = () => {
   return (

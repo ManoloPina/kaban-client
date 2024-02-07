@@ -5,6 +5,9 @@ export const ENDPOINT = {
     LOGIN: "/auth/login",
     REGISTER: "/auth/create",
   },
+  BOARDS: {
+    LIST: "/board/list",
+  },
 };
 
 export const ROUTES = {

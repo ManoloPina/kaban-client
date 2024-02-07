@@ -6,12 +6,12 @@ import { AuthContext } from "src/context/AuthContext";
 import { TextField } from "src/components/forms/TextField";
 import { useNavigate } from "react-router-dom";
 //Styles
-import { MainWrapper } from "src/pages/auth/styles";
+import { FormWrapper, MainWrapper } from "src/pages/auth/styles";
 import * as S from "./styles";
 import * as Styles from "src/styles";
 //Types
 import { ENDPOINT, ROUTES } from "src/constants";
-import { IUser } from "src/types/user";
+import { IUser } from "src/types/User";
 
 interface IForm {
   // [key: string]: string;
@@ -61,7 +61,7 @@ export const Register: React.FC = React.memo(() => {
   };
 
   return (
-    <>
+    <MainWrapper>
       <Styles.Title
         as="h1"
         color="white"
@@ -72,7 +72,7 @@ export const Register: React.FC = React.memo(() => {
       >
         Taskboard
       </Styles.Title>
-      <MainWrapper>
+      <FormWrapper>
         <S.FormContainer onSubmit={onSubmit(handleSubmit)}>
           <TextField
             fullWidth
@@ -117,7 +117,7 @@ export const Register: React.FC = React.memo(() => {
           </S.RegisterNavBtn>
           <button type="submit">Register</button>
         </S.FormContainer>
-      </MainWrapper>
-    </>
+      </FormWrapper>
+    </MainWrapper>
   );
 });
