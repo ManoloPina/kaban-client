@@ -38,24 +38,18 @@ export const useHttp = () => {
         data: { content, typeResult, message },
       }: AxiosResponse<IRes<Return>> = await http[method](path, _payload);
 
-      if (typeResult === TypeResult.Success) {
-        if (showSuccessMsg)
-          showAlert({
-            message,
-            type: "success",
-            title: "Success",
-          });
+      if (typeResult === TypeResult.Success && showSuccessMsg) {
+        showAlert({
+          message,
+          type: "success",
+          title: "Success",
+        });
         return content;
-      } else {
-        if (showWarningMsg)
-          showAlert({
-            message,
-            type: "warning",
-            title: "Warning",
-          });
-
-        return content ? content : null;
       }
+
+      return content ? content : null;
+
+
     } catch (error: any) {
       showAlert({
         type: "error",

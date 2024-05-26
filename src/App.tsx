@@ -1,19 +1,20 @@
-import React from "react";
 import { ThemeProvider } from "styled-components";
 //Styles
 import "./App.scss";
 import "animate.css";
 import theme from "src/styles/theme";
 //Components
-import Routes from "src/routes";
+import Routes from "src/Routes";
 import { AppProvider } from "src/context/AppContext";
-//Pages
+import { BrowserRouter as Router } from "react-router-dom";
 
 const App = () => {
   return (
     <ThemeProvider theme={theme}>
       <AppProvider>
-        <Routes />
+        <Router>
+          <Routes />
+        </Router>
       </AppProvider>
     </ThemeProvider>
   );

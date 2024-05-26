@@ -1,44 +1,32 @@
 import {
-  createBrowserRouter,
-  RouteObject,
-  RouterProvider,
+  Route,
+  Routes as _Routes,
 } from "react-router-dom";
 //Components
-import { ProtectedRoute } from "src/routes/ProtectedRoute";
+import { ProtectedRoute } from "src/Routes/ProtectedRoute";
 //Pages
 import { Login } from "src/pages/auth/Login";
 import { Register } from "src/pages/auth/Register";
+import { Board } from 'src/pages/Board';
 //Types
 import { ROUTES } from "src/constants";
 
-const Routes = () => {
-  const publicRoutes: RouteObject[] = [
-    {
-      path: ROUTES.AUTH.LOGIN,
-      element: <Login />,
-    },
-    {
-      path: ROUTES.AUTH.REGISTER,
-      element: <Register />,
-    },
-  ];
 
-  const authenticatedRoutes: RouteObject[] = [
-    {
-      path: "/",
-      element: <ProtectedRoute />,
-      children: [
-        {
-          path: ROUTES.HOME,
-          element: <h1>Home Page</h1>,
-        },
-      ],
-    },
-  ];
 
-  const router = createBrowserRouter([...publicRoutes, ...authenticatedRoutes]);
+export const Router = () => {
+  return (
+    <_Routes>
+      {/* Public Routes */}
+      <Route path={ROUTES.AUTH.LOGIN} element={<Login />} />
+      <Route path={ROUTES.AUTH.REGISTER} element={<Register />} />
 
-  return <RouterProvider router={router} />;
-};
+      {/* Authenticated Routes */}
+      <Route path="/" element={<ProtectedRoute />}>
+        <Route path={ROUTES.BOARD} element={<Board />} />
+      </Route>
 
-export default Routes;
+    </_Routes>
+  );
+}
+
+export default Router;

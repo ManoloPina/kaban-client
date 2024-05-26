@@ -8,7 +8,7 @@ interface IAuthContext {
 
 export const AuthContext = createContext<IAuthContext>({
   token: null,
-  setToken: () => {}, // Remove the unused variable
+  setToken: () => { }, // Remove the unused variable
 });
 
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
@@ -36,6 +36,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       delete http.defaults.headers.common["Authorization"];
       localStorage.removeItem("token");
     }
+    debugger;
   }, [token]);
 
   return (

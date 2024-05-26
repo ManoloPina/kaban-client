@@ -8,8 +8,6 @@ import { IAlert } from "./types";
 
 const AlertWrapper = styled.div`
   padding: 2rem 0;
-  width: 100%;
-  height: inherit;
   position: absolute;
   overflow: hidden;
   top: 0;
@@ -33,7 +31,7 @@ interface IAlertContext {
 
 export const AlertContext = createContext<IAlertContext>({
   alerts: [],
-  setAlerts: (_alerts: IAlert[]) => {},
+  setAlerts: (_alerts: IAlert[]) => { },
 });
 
 export const AlertProvider: React.FC<{ children: React.ReactNode }> = ({
