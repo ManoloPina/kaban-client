@@ -12,6 +12,7 @@ export const ENDPOINT = {
 
 export const ROUTES = {
   HOME: "/",
+  BOARD: "/board/:id",
   AUTH: {
     LOGIN: "/login",
     REGISTER: "/register",

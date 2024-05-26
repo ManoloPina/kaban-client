@@ -1,34 +1,40 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useContext, useEffect } from "react";
+import { useNavigate, useParams } from 'react-router-dom';
 import { useHttp } from "src/hooks";
-import { useNavigate } from 'react-router-dom';
 //Styles
 import * as S from "./styles";
 import * as Styles from "src/styles";
 //Components
 import { MdOutlineDashboard } from "react-icons/md";
 //Types
-import { ENDPOINT } from "src/constants";
 import { IBoards } from "src/types/Boards";
+import { BoardContext } from "src/context/BoardContext";
+import { ENDPOINT } from "src/constants";
 
-interface Props {}
+interface Props {
+
+}
 
 export const Sidebar: React.FC<Props> = React.memo(() => {
   //hooks
+  const { id } = useParams();
+  const { boards, setBoards } = useContext(BoardContext);
   const { request } = useHttp();
   const navigate = useNavigate();
-  //state
-  const [boardNames, setBoardNames] = useState<string[]>([]);
   //handlers
+  const fetchBoards = useCallback(async () => {
+    const res = await request<IBoards[], any>({
+      method: "get",
+      path: ENDPOINT.BOARDS.LIST,
+    });
+    if (res) setBoards(res);
+  }, [boards]);
+
+  const handleNavigation = (board: IBoards) => () => navigate(`/board/${board._id}`);
 
   useEffect(() => {
-    (async () => {
-      const res = await request<IBoards[], any>({
-        method: "get",
-        path: ENDPOINT.BOARDS.LIST,
-      });
-      if (res) setBoardNames(res.map((board) => board.name));
-    })();
-  }, []);
+    fetchBoards();
+  }, [])
 
   return (
     <S.SidebarContainer>
@@ -36,10 +42,14 @@ export const Sidebar: React.FC<Props> = React.memo(() => {
         Taskboard
       </Styles.Title>
       <S.List>
-        {boardNames.map((name, i) => (
-          <S.Item key={i}>
-            <MdOutlineDashboard size={16}/>
-            {name}
+        {boards.map(board => (
+          <S.Item 
+          key={board._id} 
+          onClick={handleNavigation(board)}
+          className={board._id === id ? 'active' : undefined} 
+          >
+            <MdOutlineDashboard size={16} />
+            {board.name}
           </S.Item>
         ))}
       </S.List>

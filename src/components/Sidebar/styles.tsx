@@ -35,7 +35,7 @@ export const Item = styled.li`
   & svg {
     padding-right: 5px;
   }
-  &:hover {
+  &:hover, &.active {
    background-color: ${theme.palette.primary.main};
   }
 `;
