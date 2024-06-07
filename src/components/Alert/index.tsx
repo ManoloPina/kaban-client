@@ -11,9 +11,13 @@ import ErrorRounded from "src/assets/icons/error_rounded.svg?react";
 //Types
 import { IAlert } from "src/context/AlertContext/types";
 
-interface Props extends IAlert {}
+interface Props extends IAlert {
+  index: number;
+  onRemove: (index: number) => (e: any) => void;
+}
 
-export const Alert: React.FC<Props> = ({ title, message, type }) => {
+export const Alert: React.FC<Props> = ({ index, title, message, type, onRemove }) => {
+
   const Icon = useMemo(() => {
     switch (type) {
       case "success":
@@ -40,11 +44,17 @@ export const Alert: React.FC<Props> = ({ title, message, type }) => {
     }
   }, [type]);
 
+
   return (
     <S.NotificationContainer>
       <Icon width={24} height={24} fill={iconColor} />
       <Styles.Title as="h5">{title}</Styles.Title>
-      <CloseRounded width={24} height={24} fontWeight={600} />
+      <CloseRounded
+        width={24}
+        height={24}
+        fontWeight={600}
+        cursor="pointer"
+        onClick={onRemove(index)} />
       <Styles.Caption className="message" color="main">
         {message}
       </Styles.Caption>
