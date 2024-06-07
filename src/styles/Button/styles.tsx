@@ -7,6 +7,7 @@ export const Button = styled.button`
   padding: 1rem 2rem;
   border: none;
   font-weight: normal;
+  text-align: center;
   cursor: pointer;
   &:hover {
     opacity: 0.9;
@@ -14,6 +15,7 @@ export const Button = styled.button`
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content: center;
   svg {
     padding: 0 2.5px;
   }

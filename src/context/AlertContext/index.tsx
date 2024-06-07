@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState, useEffect, useRef } from "react";
 //Styles
 import styled from "styled-components";
 //Components
@@ -47,6 +47,13 @@ export const AlertProvider: React.FC<{ children: React.ReactNode }> = ({
     return () => clearTimeout(timerId);
   }, [alerts]);
 
+  const handleRemoveAlert = (index: number) => (_e: any) => {
+    const _alerts = [...alerts];
+    _alerts.splice(index, 1);
+    setAlerts(_alerts);
+  }
+
+
   return (
     <AlertContext.Provider
       value={{
@@ -58,7 +65,7 @@ export const AlertProvider: React.FC<{ children: React.ReactNode }> = ({
       {alerts.length > 0 && (
         <AlertWrapper>
           {alerts.map((alert, i) => (
-            <Alert key={i} {...alert} />
+            <Alert key={i} index={i} {...alert} onRemove={handleRemoveAlert} />
           ))}
         </AlertWrapper>
       )}
