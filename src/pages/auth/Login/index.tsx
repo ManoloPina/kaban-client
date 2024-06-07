@@ -1,8 +1,8 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import * as yup from "yup";
-import { useForm, useHttp } from "src/hooks";
+import { useForm, useHttp, useAlert } from "src/hooks";
 import { AuthContext } from "src/context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 //Styles
 import * as S from "./styles";
 import * as Styles from "src/styles";
@@ -31,10 +31,12 @@ const schema: yup.ObjectSchema<IForm> = yup.object().shape({
 });
 
 export const Login: React.FC = React.memo(() => {
+  const { showAlert } = useAlert();
   const { request } = useHttp();
   const navigate = useNavigate();
-  const { setToken } = useContext(AuthContext);
+  const { setToken, token } = useContext(AuthContext);
   const { register, onSubmit, errors } = useForm<IForm>(schema);
+
   //handlers
   const handleSubmit = async (form: Partial<IForm>) => {
     const res = await request<IUser, Partial<IForm>>({
@@ -49,6 +51,10 @@ export const Login: React.FC = React.memo(() => {
       navigate(ROUTES.HOME);
     }
   };
+
+  useEffect(() => {
+    if (token) navigate(ROUTES.HOME);
+  }, []);
 
   return (
     <MainWrapper>
@@ -86,7 +92,8 @@ export const Login: React.FC = React.memo(() => {
 
           <S.LoginNavBtn to={ROUTES.AUTH.REGISTER}>Register</S.LoginNavBtn>
 
-          <button type="submit">Login</button>
+          <Styles.Button type="submit">Login</Styles.Button>
+
         </S.FormContainer>
       </FormWrapper>
     </MainWrapper>
