@@ -25,7 +25,7 @@ export interface Theme {
     warning: IPaletteProps;
   };
   typography: {
-    fontSize: string | number;
+    body: string | number;
     fontWeight: number | string;
     h1: IHeaderProps;
     h2: IHeaderProps;

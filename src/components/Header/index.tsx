@@ -1,10 +1,10 @@
 import React, { useCallback, useContext, useMemo, useState } from 'react';
 import { useParams } from 'react-router';
 import { BoardContext } from 'src/context/BoardContext';
+import { useTheme } from 'styled-components';
 //Styles
 import * as S from './styles';
 import * as Styles from 'src/styles';
-import theme from 'src/styles/theme';
 import AddRoundedIcon from 'src/assets/icons/add_rounded.svg?react';
 import Modal from '../Modal';
 
@@ -13,6 +13,7 @@ interface Props {
 
 const Header: React.FC<Props> = () => {
   const { id } = useParams();
+  const theme = useTheme();
   const { boards } = useContext(BoardContext);
 
   const [openModal, setOpenModal] = useState(false);

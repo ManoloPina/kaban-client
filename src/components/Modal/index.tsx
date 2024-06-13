@@ -1,4 +1,4 @@
-import React, { Children, ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 //Styles
 import * as S from './styles';
 import * as Styles from 'src/styles';

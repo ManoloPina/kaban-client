@@ -1,16 +1,16 @@
 import { Theme } from "src/types/theme";
 
-const theme: Theme = {
+const dark: Theme = {
   palette: {
     primary: {
-      main: "#5a56ae",
+      main: "#635FC7",
       dark: "#2D2B57",
-      light: "#D6D5EB",
+      light: "#A8A4FF",
     },
     secondary: {
-      main: "#2a2c39",
-      light: "#40424c",
-      dark: "#23242f",
+      main: "#2B2C37",
+      light: "#3E3F4E",
+      dark: "#20212C",
     },
     text: {
       main: "#727b89",
@@ -24,8 +24,8 @@ const theme: Theme = {
       dark: "#1b5e20",
     },
     error: {
-      main: "#d32f2f",
-      light: "#ef5350",
+      main: "#EA5555",
+      light: "#FF9898",
       dark: "#c62828",
     },
     warning: {
@@ -35,10 +35,10 @@ const theme: Theme = {
     },
   },
   typography: {
-    fontSize: "1.4rem",
-    fontWeight: 400,
+    body: "1.2rem",
+    fontWeight: 500,
     h1: {
-      fontSize: "2rem",
+      fontSize: "2.4rem",
       fontWeight: 600,
     },
     h2: {
@@ -46,7 +46,7 @@ const theme: Theme = {
       fontWeight: 600,
     },
     h3: {
-      fontSize: "1.6rem",
+      fontSize: "1.4rem",
       fontWeight: 600,
     },
     h4: {
@@ -64,4 +64,19 @@ const theme: Theme = {
   },
 };
 
-export default theme;
+const light: Theme = {
+  ...dark, palette: {
+    ...dark.palette,
+    secondary: {
+      dark: '#F4F7FD',
+      light: '#E4EBFA',
+      main: 'white'
+    },
+    text: {
+      ...dark.palette.text,
+      light: '#828FA3'
+    }
+  }
+}
+
+export { light, dark };

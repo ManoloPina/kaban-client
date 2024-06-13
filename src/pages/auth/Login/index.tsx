@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from "react";
 import * as yup from "yup";
 import { useForm, useHttp, useAlert } from "src/hooks";
 import { AuthContext } from "src/context/AuthContext";
-import { useNavigate, useSearchParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 //Styles
 import * as S from "./styles";
 import * as Styles from "src/styles";

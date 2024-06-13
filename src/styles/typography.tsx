@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import theme from "src/styles/theme";
+import * as theme from "src/styles/theme";
 import { IHeaderProps } from "src/types/theme";
 import { useUtils } from "src/hooks";
 
@@ -7,8 +7,8 @@ interface ITitlePops extends React.CSSProperties {
   as?: "h1" | "h2" | "h3" | "h4" | "h5";
 }
 
-const getTypeProps = (type: keyof typeof theme.typography): IHeaderProps => {
-  const titleProps = theme.typography[type];
+const getTypeProps = (type: keyof typeof theme.dark.typography): IHeaderProps => {
+  const titleProps = theme.dark.typography[type];
   return titleProps as IHeaderProps;
 };
 
@@ -34,7 +34,7 @@ export const Subtitle = styled.h2`
   margin: unset;
 `;
 
-type PaletteTextKeys = keyof typeof theme.palette.text;
+type PaletteTextKeys = keyof typeof theme.dark.palette.text;
 
 export type TextStyledProps = {
   color: PaletteTextKeys;
