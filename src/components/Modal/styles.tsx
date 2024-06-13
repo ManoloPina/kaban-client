@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import theme from "src/styles/theme";
 import { Size } from './types';
 
 export const ModalBackdrop = styled.div`
@@ -31,7 +30,7 @@ const getModalSize = (size?: Size): string => {
 export const ModalContainer = styled.div<{ size?: Size }>`
   grid-template-columns: 1fr;
   justify-content: flex-start;
-  background-color: ${theme.palette.secondary.main};
+  background-color: ${props => props.theme.palette.secondary.main};
   padding: 2rem;
   border-radius: 10px;
   width: ${props => getModalSize(props.size)};

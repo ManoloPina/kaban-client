@@ -1,63 +1,36 @@
-import React, { useMemo } from "react";
+import React, { useContext } from 'react';
+import { AlertContext } from 'src/context/AlertContext';
+//Components
+import { Item } from './Item';
 //Styles
-import * as S from "./styles";
-import * as Styles from "src/styles";
-import theme from "src/styles/theme";
-import CloseRounded from "src/assets/icons/close_rounded.svg?react";
-import CheckCircleRounded from "src/assets/icons/check_circle_rounded.svg?react";
-import WarningRounded from "src/assets/icons/warning_rounded.svg?react";
-import ErrorRounded from "src/assets/icons/error_rounded.svg?react";
+import * as S from 'src/components/Alert/styles';
 
-//Types
-import { IAlert } from "src/context/AlertContext/types";
+interface Props {
 
-interface Props extends IAlert {
-  index: number;
-  onRemove: (index: number) => (e: any) => void;
 }
 
-export const Alert: React.FC<Props> = ({ index, title, message, type, onRemove }) => {
+export const Alert: React.FC<Props> = () => {
+  const { alerts, setAlerts } = useContext(AlertContext);
 
-  const Icon = useMemo(() => {
-    switch (type) {
-      case "success":
-        return CheckCircleRounded;
-      case "warning":
-        return WarningRounded;
-      case "error":
-        return ErrorRounded;
-      default:
-        return CheckCircleRounded;
-    }
-  }, [type]);
+  //handlers
+  const handleRemoveAlert = (index: number) => (_e: any) => {
+    const _alerts = [...alerts];
+    _alerts.splice(index, 1);
+    setAlerts(_alerts);
+  }
 
-  const iconColor = useMemo(() => {
-    switch (type) {
-      case "success":
-        return theme.palette.success.light;
-      case "warning":
-        return theme.palette.warning.light;
-      case "error":
-        return theme.palette.error.light;
-      default:
-        return theme.palette.success.light;
-    }
-  }, [type]);
-
+  if (alerts.length === 0) return null;
 
   return (
-    <S.NotificationContainer>
-      <Icon width={24} height={24} fill={iconColor} />
-      <Styles.Title as="h5">{title}</Styles.Title>
-      <CloseRounded
-        width={24}
-        height={24}
-        fontWeight={600}
-        cursor="pointer"
-        onClick={onRemove(index)} />
-      <Styles.Caption className="message" color="main">
-        {message}
-      </Styles.Caption>
-    </S.NotificationContainer>
+    <>
+      {alerts.length > 0 && (
+        <S.AlertWrapper>
+          {alerts.map((alert, i) => (
+            <Item key={i} index={i} {...alert} onRemove={handleRemoveAlert} />
+          ))}
+        </S.AlertWrapper>
+      )}
+    </>
   );
-};
+}
+

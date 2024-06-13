@@ -12,7 +12,7 @@ export const FieldContainer = styled.div<FullWidth>`
 
 export const Label = styled.label`
   display: flex;
-  font-size: 0.8rem;
+  font-size: 8px;
   font-weight: bold;
   color: #5c5c68;
   align-items: flex-start;
@@ -24,7 +24,7 @@ export const Field = styled.input<FullWidth>`
   border: 2px #4f5160 solid;
   width: ${(props) => (props?.fullWidth ? "auto" : "fit-content")};
   background-color: white;
-  font-size: 1.2rem;
+  font-size: 12px;
   color: #5c5c68;
   padding: 12px 10px;
   font-weight: 500;

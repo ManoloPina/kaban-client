@@ -1,15 +1,14 @@
 import styled from "styled-components";
-import theme from 'src/styles/theme';
 
 export const SidebarContainer = styled.div`
   width: 265px;
-  height: 100%;
+  height: calc(100% - 2.5rem);
   display: grid;
   padding: 1.2rem;
   grid-template-columns: 1fr;
-  background-color: #2c2c38;
+  background-color: ${props => props.theme.palette.secondary.main};
   grid-template-rows: max-content 1fr max-content;
-  border-right: 1px solid ${theme.palette.secondary.light};
+  border-right: 1px solid ${props => props.theme.palette.secondary.light};
 `;
 
 
@@ -17,8 +16,13 @@ export const List = styled.ul`
   list-style: none;
   padding: 0;
   margin-left: -1.2rem;
+  font-size: ${props => props.theme.typography.body};
   & > li:not(:last-child) {
     margin-bottom: 1rem;
+  }
+  color: ${props => props.theme.palette.text.main};
+  & li:hover, & li:hover, .active {
+    color: white;
   }
 `;
 
@@ -36,6 +40,6 @@ export const Item = styled.li`
     padding-right: 5px;
   }
   &:hover, &.active {
-   background-color: ${theme.palette.primary.main};
+   background-color: ${props => props.theme.palette.primary.main};
   }
 `;

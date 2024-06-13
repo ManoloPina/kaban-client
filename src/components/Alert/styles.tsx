@@ -1,5 +1,23 @@
 import styled from "styled-components";
 
+export const AlertWrapper = styled.div`
+  padding: 2rem 0;
+  position: absolute;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  right: 0;
+
+  & > div {
+    animation: bounceInDown;
+    animation-duration: 1s;
+    margin: 0 auto;
+    &:not(:first-child) {
+      margin-top: 1rem;
+    }
+  }
+`;
+
 export const NotificationContainer = styled.div`
   display: grid;
   padding: 1rem;

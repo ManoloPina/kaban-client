@@ -15,6 +15,7 @@ export const MainContainer = styled.div`
   height: 100%;
   align-items: flex-start;
   align-content: flex-start;
+  background-color: ${props => props.theme.palette.secondary.dark};
   
   & div:first-child {
     grid-row: span 3;

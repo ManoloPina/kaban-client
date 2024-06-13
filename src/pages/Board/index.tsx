@@ -1,4 +1,4 @@
-import React, { useCallback, useContext, useEffect, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo } from 'react';
 import { BoardContext } from 'src/context/BoardContext';
 import { useParams } from 'react-router';
 import { useHttp } from 'src/hooks';
@@ -6,9 +6,6 @@ import { useHttp } from 'src/hooks';
 import * as S from './styles';
 //Components
 import NewColumn from './NewColumn';
-//Types
-import { IBoards } from 'src/types/Boards';
-import { ENDPOINT } from 'src/constants';
 
 
 export const Board: React.FC = () => {
@@ -20,7 +17,7 @@ export const Board: React.FC = () => {
   const columns = useMemo(() =>
     boards.find(board => board._id === id)?.columns || [], [boards, id]);
 
-  
+
 
   useEffect(() => {
     // fetchBoards();
