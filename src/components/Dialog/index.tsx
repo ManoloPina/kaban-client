@@ -13,7 +13,7 @@ interface Props {
   onClose?: () => void;
 }
 
-const Modal: React.FC<Props> = ({ title, open, size = 'md', children, onClose }) => {
+const Dialog: React.FC<Props> = ({ title, open, size = 'md', children, onClose }) => {
   if (!open) return null;
 
   return (
@@ -26,4 +26,4 @@ const Modal: React.FC<Props> = ({ title, open, size = 'md', children, onClose })
   );
 }
 
-export default Modal;
+export default React.memo(Dialog);

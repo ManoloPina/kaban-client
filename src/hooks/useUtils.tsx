@@ -9,7 +9,9 @@ export const useUtils = () => {
     key: string,
     value: any
   ): value is CSSProperties[keyof CSSProperties] => {
-    return key in document.createElement("div").style;
+    const div = document.createElement("div");
+    div.style.setProperty(key, value);
+    return div.style.getPropertyValue(key) !== "";
   };
 
   const camelToKebab = (str: string): string => {

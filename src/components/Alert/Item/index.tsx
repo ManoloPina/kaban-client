@@ -56,14 +56,14 @@ export const Item: React.FC<Props> = ({
   return (
     <S.NotificationContainer>
       <Icon width={24} height={24} fill={iconColor} />
-      <Styles.Title as="h5">{title}</Styles.Title>
+      <Styles.Title as="h4">{title}</Styles.Title>
       <CloseRounded
         width={24}
         height={24}
         fontWeight={600}
         cursor="pointer"
         onClick={onRemove(index)} />
-      <Styles.Caption className="message" color="main">
+      <Styles.Caption className="message" color="primary">
         {message}
       </Styles.Caption>
     </S.NotificationContainer>

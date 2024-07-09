@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import * as theme from "src/styles/theme";
-import { IHeaderProps } from "src/types/theme";
+import { TypographyStyle } from "src/types/theme";
 import { useUtils } from "src/hooks";
 
 interface ITitlePops extends React.CSSProperties {
-  as?: "h1" | "h2" | "h3" | "h4" | "h5";
+  as?: "h1" | "h2" | "h3" | "h4";
 }
 
-const getTypeProps = (type: keyof typeof theme.dark.typography): IHeaderProps => {
+const getTypeProps = (type: keyof typeof theme.dark.typography): TypographyStyle => {
   const titleProps = theme.dark.typography[type];
-  return titleProps as IHeaderProps;
+  return titleProps as TypographyStyle;
 };
 
 export const Title = styled.h1<ITitlePops>`
@@ -41,15 +41,15 @@ export type TextStyledProps = {
 };
 
 export const Text = styled.p<TextStyledProps>`
-  font-size: ${(props) => props.theme.typography.fontSize};
+  font-size: ${(props) => props.theme.typography.body1.fontSize}px;
   color: ${(props) => props.theme.palette.text[props.color]};
   font-weight: ${(props) => props.theme.typography.fontWeight};
   margin: unset;
 `;
 
 export const Caption = styled.p<TextStyledProps>`
-  font-size: ${(props) => props.theme.typography.caption.fontSize};
+  font-size: ${(props) => props.theme.typography.fontSize}px;
   color: ${(props) => props.theme.palette.text[props.color]};
-  font-weight: ${(props) => props.theme.typography.caption.fontWeight};
+  font-weight: ${(props) => props.theme.typography.fontWeight};
   margin: unset;
 `;

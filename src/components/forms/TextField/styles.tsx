@@ -12,20 +12,20 @@ export const FieldContainer = styled.div<FullWidth>`
 
 export const Label = styled.label`
   display: flex;
-  font-size: 8px;
+  font-size: 12px;
   font-weight: bold;
-  color: #5c5c68;
+  color: white;
   align-items: flex-start;
   padding-bottom: 5px;
 `;
 
 export const Field = styled.input<FullWidth>`
   border-radius: 6px;
-  border: 2px #4f5160 solid;
+  border: 1px ${props => props.theme.palette.secondary.light} solid;
   width: ${(props) => (props?.fullWidth ? "auto" : "fit-content")};
-  background-color: white;
-  font-size: 12px;
-  color: #5c5c68;
+  background-color: transparent;
+  font-size: 13px;
+  color: ${props => props.theme.palette.text.primary};
   padding: 12px 10px;
   font-weight: 500;
   outline: none;

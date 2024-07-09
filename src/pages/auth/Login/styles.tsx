@@ -10,4 +10,5 @@ export const FormContainer = styled.form`
 
 export const LoginNavBtn = styled(NavLink)`
   text-align: center;
+  font-size: ${props => props.theme.typography.fontSize}
 `;
