@@ -5,17 +5,23 @@ export const useUtils = () => {
     return Object.keys(obj).length === 0;
   };
 
+  const camelToKebab = (str: string): string => {
+    return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+  };
+
   const isValidCSSProperty = (
     key: string,
     value: any
   ): value is CSSProperties[keyof CSSProperties] => {
-    const div = document.createElement("div");
-    div.style.setProperty(key, value);
-    return div.style.getPropertyValue(key) !== "";
-  };
+    if (value == null) {
+      return false;
+    }
 
-  const camelToKebab = (str: string): string => {
-    return str.replace(/([a-z])([A-Z])/g, "$1-$2").toLowerCase();
+    const div = document.createElement("div");
+    const kebabKey = camelToKebab(key);
+
+    div.style.setProperty(kebabKey, value);
+    return div.style.getPropertyValue(kebabKey) !== "";
   };
 
   return {

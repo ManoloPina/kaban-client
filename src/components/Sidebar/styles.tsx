@@ -25,7 +25,7 @@ export const List = styled.ul`
   padding: 0;
   margin-left: -1.2rem;
   font-weight: bold;
-  max-width: 226px;
+  max-width: 276px;
   & > li:not(:last-child) {
     margin-bottom: 1rem;
   }
@@ -43,23 +43,24 @@ export const Item = styled.li`
   padding: 1.6rem 0;
   border-bottom-right-radius: 100px;
   border-top-right-radius: 100px;
-  padding-left: 1.2rem;
+  padding-left: 3.2rem;
   color: ${props => props.theme.palette.text.secondary};
   font-size: ${props => props.theme.typography.h3.fontSize}px;
+  column-gap: 1.6rem;
   cursor: pointer;
   & svg {
     padding-right: 5px;
   }
   &:hover:not(:last-child), 
   &.active  {
-   background-color: ${props => props.theme.palette.secondary.main};
+   background-color: ${props => props.theme.palette.primary.main};
   }
   &:last-child:hover {
     color: ${props => props.theme.palette.primary.main};
   }
   &:hover svg path, 
   &.active svg path {
-    fill: ${props => props.theme.palette.primary.main};
+    fill: ${props => props.theme.palette.secondary.main};
   }
 `;
 
@@ -93,4 +94,11 @@ export const FooterActionList = styled.ul`
   }
   }
   
+`;
+
+export const DialogContentContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-row-gap: 16px;
+  grid-column-gap: 24px;
 `;

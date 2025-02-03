@@ -52,9 +52,9 @@ export const Login: React.FC = React.memo(() => {
     }
   };
 
-  useEffect(() => {
-    if (token) navigate(ROUTES.HOME);
-  }, []);
+  // useEffect(() => {
+  //   if (token) navigate(ROUTES.HOME);
+  // }, []);
 
   return (
     <MainWrapper>
@@ -92,7 +92,9 @@ export const Login: React.FC = React.memo(() => {
 
           <S.LoginNavBtn to={ROUTES.AUTH.REGISTER}>Register</S.LoginNavBtn>
 
-          <Styles.Button type="submit">Login</Styles.Button>
+          <Styles.Button
+            variant="primary"
+            type="submit">Login</Styles.Button>
 
         </S.FormContainer>
       </FormWrapper>

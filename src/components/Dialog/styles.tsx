@@ -1,7 +1,6 @@
-import styled from "styled-components";
-import { Size } from './types';
+import styled, { css } from "styled-components";
 
-export const ModalBackdrop = styled.div`
+export const DialogBackdrop = styled.div`
   background-color: rgba(0, 0, 0, 0.4);
   position: absolute;
   top: 0;
@@ -14,26 +13,25 @@ export const ModalBackdrop = styled.div`
   justify-content: center;
 `;
 
-const getModalSize = (size?: Size): string => {
-  switch (size) {
-    case 'lg':
-      return "60%";
-    case 'md':
-      return "40%";
-    case 'sm':
-      return "25%";
-    default:
-      return "40%";
-  }
-}
-
-export const ModalContainer = styled.div<{ size?: Size }>`
+export const DialogContainer = styled.div`
   grid-template-columns: 1fr;
   justify-content: flex-start;
-  background-color: ${props => props.theme.palette.secondary.main};
-  padding: 2rem;
-  border-radius: 10px;
-  width: ${props => getModalSize(props.size)};
+  background-color: ${props => props.theme.palette.background.paper};
+  border-radius: 6px;
+
+  ${props => props.theme.breakpoints.down('md')`
+    width: 342px;
+    padding: 2.4rem;
+  `}
+
+  ${props => props.theme.breakpoints.up('md')`
+    width: 480px;
+    padding: 3.2rem;
+  `}
+
 `;
 
-export const ModalContent = styled.div``;
+export const DialogContent = styled.div`
+  margin-top: 2.4rem;
+  width: 100%;
+`;

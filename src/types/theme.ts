@@ -1,4 +1,6 @@
 import * as CSS from 'csstype';
+import { breakpoints } from 'src/styles/theme';
+import { css } from 'styled-components';
 // Define types for individual palette colors
 interface PaletteColor {
   main: string;
@@ -41,24 +43,25 @@ interface Palette {
 
 // Define the structure of the typography
 export interface TypographyStyle {
-  fontSize: CSS.Property.FontSize|number;
+  fontSize: CSS.Property.FontSize | number;
   fontFamily: CSS.Property.FontFamily;
   lineHeight: CSS.Property.LineHeight;
   fontWeight: CSS.Property.FontWeight;
-  letterSpacing: CSS.Property.LetterSpacing|number;
+  letterSpacing: CSS.Property.LetterSpacing | number;
   fontStyle: CSS.Property.FontStyle;
 }
 
 interface Typography {
-  fontFamily: CSS.Property.FontFamily;
-  fontSize: CSS.Property.FontSize|number;
-  fontWeight: CSS.Property.FontWeight|number;
   h1: TypographyStyle;
   h2: TypographyStyle;
   h3: TypographyStyle;
   h4: TypographyStyle;
   body1: TypographyStyle;
   body2: TypographyStyle;
+  sm: TypographyStyle;
+  md: TypographyStyle;
+  lg: TypographyStyle;
+  xl: TypographyStyle;
 }
 
 // Define the structure of the shape
@@ -72,8 +75,23 @@ interface Theme {
   spacing: number[];
   shape: Shape;
   shadows: string[];
+  breakpoints: Breakpoints;
 }
 
+interface Breakpoints {
+  values: {
+    xs: number;
+    sm: number;
+    md: number;
+    lg: number;
+    xl: number;
+  };
+  up: (
+    key: keyof Breakpoints['values']
+  ) => (style: TemplateStringsArray | string) => ReturnType<typeof css>;
+  down: (
+    key: keyof Breakpoints['values']
+  ) => (style: TemplateStringsArray | string) => ReturnType<typeof css>;
+}
 
-// Export the themes and types
-export type { Theme, Palette, PaletteColor, Typography, Shape };
+export type { Theme, Palette, PaletteColor, Typography, Shape, Breakpoints };
