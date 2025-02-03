@@ -6,7 +6,7 @@ import { useTheme } from 'styled-components';
 import * as S from './styles';
 import * as Styles from 'src/styles';
 import AddRoundedIcon from 'src/assets/icons/add_rounded.svg?react';
-import Modal from '../Modal';
+import Dialog from 'src/components/Dialog';
 
 interface Props {
 }
@@ -30,12 +30,12 @@ const Header: React.FC<Props> = () => {
   return (
     <>
       <S.HeaderContainer>
-        <Styles.Title as="h1" color={theme.palette.text.light}>{board?.name}</Styles.Title>
+        <Styles.Title as="h1" color={theme.palette.text.primary}>{board?.name}</Styles.Title>
         <Styles.Button onClick={handleNewTaskBtn} startIcon={<AddRoundedIcon width={18} height={18} fill='white' />}>Add New Task</Styles.Button>
       </S.HeaderContainer>
-      <Modal title='Add New Task' open={openModal} onClose={handleModalClose}></Modal>
+      <Dialog title='Add New Task' open={openModal} onClose={handleModalClose}></Dialog>
     </>
   );
 }
 
-export default Header;
+export default React.memo(Header);

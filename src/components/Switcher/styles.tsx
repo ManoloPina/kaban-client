@@ -5,7 +5,7 @@ export const Label = styled.label<{ checked: boolean }>`
   text-indent: -9999px;  
   width: 40px;  
   height: 20px;  
-  background: ${({ checked, theme }) => (checked ? theme.palette.primary.dark : theme.palette.primary.main)};  
+  background: ${props => props.theme.palette.primary.main};
   display: block;  
   border-radius: 100px;  
   position: relative;

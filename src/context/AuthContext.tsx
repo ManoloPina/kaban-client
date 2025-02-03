@@ -14,7 +14,7 @@ export const AuthContext = createContext<IAuthContext>({
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [token, setToken] = useState(localStorage.getItem("token"));
+  const [token, setToken] = useState(() => localStorage.getItem("token"));
 
   //handlers
   const _setToken = (token: string | null) => setToken(token);
