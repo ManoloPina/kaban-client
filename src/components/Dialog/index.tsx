@@ -2,27 +2,28 @@ import React, { ReactNode } from 'react';
 //Styles
 import * as S from './styles';
 import * as Styles from 'src/styles';
-//Types
-import { Size } from './types';
 
 interface Props {
   title: string;
   open: boolean;
-  size?: Size;
   children?: ReactNode;
   onClose?: () => void;
 }
 
-const Dialog: React.FC<Props> = ({ title, open, size = 'md', children, onClose }) => {
+const Dialog: React.FC<Props> = ({ title, open, children, onClose }) => {
   if (!open) return null;
 
   return (
-    <S.ModalBackdrop onClick={onClose}>
-      <S.ModalContainer size={size}>
-        <Styles.Title as="h3" color="white">{title}</Styles.Title>
-        <S.ModalContent>{children}</S.ModalContent>
-      </S.ModalContainer>
-    </S.ModalBackdrop>
+    <S.DialogBackdrop onClick={onClose}>
+      <S.DialogContainer>
+        <Styles.Title as="h2">
+          {title}
+        </Styles.Title>
+        <S.DialogContent>
+          {children}
+        </S.DialogContent>
+      </S.DialogContainer>
+    </S.DialogBackdrop>
   );
 }
 

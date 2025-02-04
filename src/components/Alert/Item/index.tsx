@@ -63,9 +63,9 @@ export const Item: React.FC<Props> = ({
         fontWeight={600}
         cursor="pointer"
         onClick={onRemove(index)} />
-      <Styles.Caption className="message" color="primary">
+      <Styles.Text variant="body1" fontSize={20} className="message" color="primary">
         {message}
-      </Styles.Caption>
+      </Styles.Text>
     </S.NotificationContainer>
   );
 };

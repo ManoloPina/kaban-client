@@ -4,6 +4,7 @@ import * as S from './styles';
 //Types
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   startIcon?: ReactNode
+  variant: 'primary' | 'secondary' | 'destructive';
 }
 
 export const Button: React.FC<Props> = ({ startIcon, ...props }) => {

@@ -1,14 +1,42 @@
-import { Theme } from "src/types/theme";
+import { Breakpoints, Theme } from "src/types/theme";
+import { css, DefaultTheme } from "styled-components";
+
+export const breakpoints: Breakpoints = {
+  values: {
+    xs: 0,
+    sm: 600,
+    md: 900,
+    lg: 1280,
+    xl: 1920,
+  },
+  up: (key: keyof typeof breakpoints.values) => {
+    return (style: TemplateStringsArray | string) => css`
+      @media(min-width: ${(props: { theme: DefaultTheme }) => props.theme.breakpoints.values[key]}px) {
+        ${style};
+      }
+    `;
+  },
+  down: (key: keyof typeof breakpoints.values) => {
+    return (style: TemplateStringsArray | string) => css`
+      @media(max-width: ${(props: { theme: DefaultTheme }) => props.theme.breakpoints.values[key]}px) {
+        ${style};
+      }
+    `;
+  }
+}
 
 export const light: Theme = {
   palette: {
     mode: 'light',
     primary: {
-      main: '#a8a4ff',
-      contrastText: '#ffffff',
+      main: '#635FC7',
+      contrastText: '#FFFFFF',
+      light: "#A8A4FF"
     },
     secondary: {
-      main: '#6556d9',
+      main: '#F0EFFA',
+      contrastText: "#635FC7",
+      dark: '#D8D7F1'
     },
     error: {
       main: '#ea5555',
@@ -47,9 +75,38 @@ export const light: Theme = {
     },
   },
   typography: {
-    fontFamily: "Plus Jakarta Sans",
-    fontSize: 14,
-    fontWeight: 700,
+    sm: {
+      fontSize: 12,
+      fontFamily: "Plus Jakarta Sans",
+      fontWeight: "normal",
+      fontStyle: "normal",
+      letterSpacing: 0,
+      lineHeight: 23,
+    },
+    md: {
+      fontSize: 15,
+      fontFamily: "Plus Jakarta Sans",
+      fontWeight: "normal",
+      fontStyle: "normal",
+      letterSpacing: 0,
+      lineHeight: 23,
+    },
+    lg: {
+      fontSize: 18,
+      fontFamily: "Plus Jakarta Sans",
+      fontWeight: "normal",
+      fontStyle: "normal",
+      letterSpacing: 0,
+      lineHeight: 23,
+    },
+    xl: {
+      fontSize: 24,
+      fontFamily: "Plus Jakarta Sans",
+      fontWeight: "normal",
+      fontStyle: "normal",
+      letterSpacing: 0,
+      lineHeight: 23,
+    },
     body1: {
       fontSize: 13,
       fontFamily: "Plus Jakarta Sans",
@@ -100,22 +157,25 @@ export const light: Theme = {
     },
 
   },
-  spacing: [0, 4, 8, 16, 32, 64],
+  spacing: [0, 4, 8, 16, 24, 32, 64],
   shape: {
     borderRadius: 8,
   },
   shadows: Array(25).fill('none') as string[],
+  breakpoints,
 };
 
 export const dark: Theme = {
   palette: {
     mode: 'dark',
     primary: {
-      main: '#a8a4ff',
+      main: '#635FC7',
       contrastText: '#ffffff',
+      light: "#A8A4FF",
     },
     secondary: {
-      main: '#6556d9',
+      main: '#FFFFFF',
+      contrastText: "#635FC7",
     },
     error: {
       main: '#ea5555',
@@ -155,13 +215,11 @@ export const dark: Theme = {
   },
   typography: {
     ...light.typography,
-    fontFamily: 'Roboto, sans-serif',
-    fontSize: 14,
-    fontWeight: 700,
   },
   spacing: [0, 4, 8, 16, 32, 64],
   shape: {
     borderRadius: 8,
   },
   shadows: Array(25).fill('none') as string[],
+  breakpoints,
 };

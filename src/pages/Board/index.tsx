@@ -20,8 +20,8 @@ export const Board: React.FC = () => {
 
 
   useEffect(() => {
-    // fetchBoards();
-  }, []);
+    console.log({ columns })
+  }, [columns]);
 
 
   return (
