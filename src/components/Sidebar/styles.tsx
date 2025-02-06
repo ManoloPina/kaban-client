@@ -1,22 +1,29 @@
-import styled from "styled-components";
+import styled from 'styled-components';
+import * as Styles from 'src/styles';
+import { motion } from 'motion/react';
 
-export const SidebarContainer = styled.div`
-  width: 265px;
-  height: calc(100% - 2.5rem);
-  display: grid;
-  padding: 1.2rem;
-  grid-template-columns: 1fr;
-  background-color: ${props => props.theme.palette.background.paper};
-  grid-template-rows: calc(96px - 1.2rem) max-content 1fr max-content;
-  border-right: 1px solid ${props => props.theme.palette.divider};
-  grid-row-gap: 1.6rem;
-  & .title-wrapper {
-    display: flex;
-    align-items: center;
-    margin-bottom: 1.2rem;
-  }
-  & .all-boards-label {
-    font-size: ${props => props.theme.typography.body2.fontSize}px;
+export const SidebarContainer = styled(motion.div)`
+  && {
+    width: 265px;
+    height: calc(100% - 2.5rem);
+    display: grid;
+    padding: 1.2rem;
+    grid-template-columns: 1fr;
+    background-color: ${(props) => props.theme.palette.background.paper};
+    grid-template-rows: calc(96px - 1.2rem) max-content 1fr max-content;
+    border-right: 1px solid ${(props) => props.theme.palette.divider};
+    grid-row-gap: 1.6rem;
+    z-index: 2;
+
+    & .title-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 1.2rem;
+    }
+
+    & .all-boards-label {
+      font-size: ${(props) => props.theme.typography.body2.fontSize}px;
+    }
   }
 `;
 
@@ -29,8 +36,10 @@ export const List = styled.ul`
   & > li:not(:last-child) {
     margin-bottom: 1rem;
   }
-  color: ${props => props.theme.palette.text.primary};
-  & li:hover, & li:hover, .active {
+  color: ${(props) => props.theme.palette.text.primary};
+  & li:hover,
+  & li:hover,
+  .active {
     color: white;
   }
 `;
@@ -44,23 +53,23 @@ export const Item = styled.li`
   border-bottom-right-radius: 100px;
   border-top-right-radius: 100px;
   padding-left: 3.2rem;
-  color: ${props => props.theme.palette.text.secondary};
-  font-size: ${props => props.theme.typography.h3.fontSize}px;
+  color: ${(props) => props.theme.palette.text.secondary};
+  font-size: ${(props) => props.theme.typography.h3.fontSize}px;
   column-gap: 1.6rem;
   cursor: pointer;
   & svg {
     padding-right: 5px;
   }
-  &:hover:not(:last-child), 
-  &.active  {
-   background-color: ${props => props.theme.palette.primary.main};
+  &:hover:not(:last-child),
+  &.active {
+    background-color: ${(props) => props.theme.palette.primary.main};
   }
   &:last-child:hover {
-    color: ${props => props.theme.palette.primary.main};
+    color: ${(props) => props.theme.palette.primary.main};
   }
-  &:hover svg path, 
+  &:hover svg path,
   &.active svg path {
-    fill: ${props => props.theme.palette.secondary.main};
+    fill: ${(props) => props.theme.palette.secondary.main};
   }
 `;
 
@@ -74,26 +83,25 @@ export const FooterActionList = styled.ul`
     & svg {
       width: 18px;
       height: auto;
-      fill: ${props => props.theme.palette.grey[500]};
+      fill: ${(props) => props.theme.palette.grey[500]};
     }
     &:hover a {
-      color: ${props => props.theme.palette.primary.main};
+      color: ${(props) => props.theme.palette.primary.main};
     }
     &:hover svg {
-      color: ${props => props.theme.palette.primary.main};
+      color: ${(props) => props.theme.palette.primary.main};
     }
     & a {
-    display: flex;
-    flex-direction: row;
-    justify-content: start;
-    align-items: center;
-    gap: 1.5rem;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: ${props => props.theme.palette.grey[500]};
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+      align-items: center;
+      gap: 1.5rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: ${(props) => props.theme.palette.grey[500]};
+    }
   }
-  }
-  
 `;
 
 export const DialogContentContainer = styled.div`
@@ -101,4 +109,18 @@ export const DialogContentContainer = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-row-gap: 16px;
   grid-column-gap: 24px;
+`;
+
+export const ShowSidebarBtn = styled(Styles.Button)`
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
+  position: absolute;
+  bottom: 3.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 5.6rem;
+  height: 4.8rem;
+  padding: 0;
+  left: 0;
 `;
