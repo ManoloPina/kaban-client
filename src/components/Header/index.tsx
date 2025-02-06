@@ -29,9 +29,9 @@ const Header: React.FC<Props> = () => {
 
   return (
     <>
-      <S.HeaderContainer>
+      <S.HeaderContainer className='header'>
         <Styles.Title as="h1" color={theme.palette.text.primary}>{board?.name}</Styles.Title>
-        <Styles.Button onClick={handleNewTaskBtn} startIcon={<AddRoundedIcon width={18} height={18} fill='white' />}>Add New Task</Styles.Button>
+        <Styles.Button variant='primary' onClick={handleNewTaskBtn} startIcon={<AddRoundedIcon width={18} height={18} fill='white' />}>Add New Task</Styles.Button>
       </S.HeaderContainer>
       <Dialog title='Add New Task' open={openModal} onClose={handleModalClose}></Dialog>
     </>
